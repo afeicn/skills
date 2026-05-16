@@ -22,7 +22,6 @@ hermes skills install moji-daily
 | [poster-style-generator](poster-style-generator/) | 海报风格生成器 — vertical cover & end card with gpt-image-2 |
 | [video-illustration-generator](video-illustration-generator/) | Generate ordered body illustration frames for short-video scripts |
 | [pic-to-video-generator](pic-to-video-generator/) | Image序列 + 口播稿 → voiceover + captions + 9:16 MP4 |
-| [jianying-editor-skill](jianying-editor-skill/) | 剪映 AI自动化剪辑封装 API |
 
 ## License
 
