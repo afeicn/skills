@@ -1,0 +1,5 @@
+interface:
+  display_name: "Txt to Poster Video"
+  short_description: "Text to poster video workflow"
+  default_prompt: "Turn my prepared narration script into a vertical short video with image2 illustrations, matching cover/end card, VoxCPM2 narration, captions, and final MP4."
+
