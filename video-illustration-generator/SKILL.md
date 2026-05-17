@@ -19,13 +19,24 @@ Cover and end card generation belongs to `poster-style-generator`.
 
 Always generate images with OpenAI `gpt-image-2`.
 
-Use the image generation tool with:
-- model: `openai/gpt-image-2`
+Use the Hermes `image_gen` tool with:
+- model: `gpt-image-2-medium` (or `gpt-image-2-low` for speed, `gpt-image-2-high` for quality)
 - vertical-friendly source images for 9:16 video
 - preferred size: `1024x1536`
 - format: png
 
 Do not use the ambiguous `image2` alias.
+
+## Provider Setup
+
+Same setup as `poster-style-generator`:
+
+| Provider | Auth | Config |
+|----------|------|--------|
+| `openai-codex` | OAuth (ChatGPT Plus) | `hermes config set image_gen.provider openai-codex` → device code login via `hermes model` |
+| `openai` | API key | Set `OPENAI_API_KEY` in `.env`; `hermes config set image_gen.provider openai` |
+
+**For this user (沈飞):** `openai-codex` is configured. The agent calls the Hermes `image_gen` tool automatically — no manual invocation needed.
 
 ## Inputs
 
@@ -50,7 +61,7 @@ Defaults:
 2. Split the content into major beats.
 3. Create one concise image prompt per beat.
 4. Keep one consistent visual system across all prompts: palette, lighting, subject style, composition, and business/AI visual language.
-5. Generate each image using `openai/gpt-image-2`.
+5. Generate each image using `gpt-image-2-medium` (via Hermes image_gen tool).
 6. Save files in dictionary order:
    - `images/01.png`
    - `images/02.png`
@@ -76,4 +87,4 @@ After generation:
 
 ## Final Report
 
-Report the number of images, output directory, model used, and any failed prompt or fallback.
+Report the number of images, output directory, model used (`gpt-image-2-medium`), and any failed prompt or fallback.
