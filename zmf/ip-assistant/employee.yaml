@@ -1,0 +1,146 @@
+---
+id: ip_assistant
+name: 知识产权助手
+version: 0.1.0
+owner: 知识产权负责人
+deployment:
+  workstation: 电脑10
+  folder: zmf/ip-assistant
+  channel: 飞书
+  feishu_bot_name: 知识产权助手
+  hermes_agent_id: ip_assistant
+mission: 通过飞书接收技术方案、产品说明、研发记录、软件材料和商标信息，调用 Hermes Agent skills 完成创新点挖掘、专利交底、专利检索、软著材料、商标材料、期限管理、IP
+  台账和成果归档。
+users:
+- 研发人员
+- 产品经理
+- 法务人员
+- 项目申报人员
+- 管理层
+scenarios:
+  innovation_mining:
+    name: 创新点挖掘
+    role: 技术挖掘员
+    description: 从项目、产品和方案中提炼可申报 IP 点。
+    workflow: workflows.md#一创新点挖掘
+    skill_pack:
+    - IP01_innovation_mining
+    - IP08_tech_result_archive
+  patent_disclosure:
+    name: 专利交底
+    role: 专利撰写助理
+    description: 生成交底书初稿、技术效果和实施例。
+    workflow: workflows.md#二专利交底
+    skill_pack:
+    - IP02_patent_disclosure_generate
+    - IP01_innovation_mining
+  patent_search:
+    name: 专利检索
+    role: 检索分析员
+    description: 根据关键词和检索结果生成相似技术摘要。
+    workflow: workflows.md#三专利检索
+    skill_pack:
+    - IP03_patent_search_summary
+  software_copyright:
+    name: 软著材料
+    role: 软著助理
+    description: 生成软著说明书、功能说明、材料清单和代码说明。
+    workflow: workflows.md#四软著材料
+    skill_pack:
+    - IP05_software_copyright_material
+  trademark:
+    name: 商标材料
+    role: 商标助理
+    description: 生成商标申请材料清单、类别建议和使用说明。
+    workflow: workflows.md#五商标材料
+    skill_pack:
+    - IP04_trademark_material_checklist
+  deadline:
+    name: 期限管理
+    role: 期限管理员
+    description: 管理补正、答复、缴费、续展等期限并飞书提醒。
+    workflow: workflows.md#六期限管理
+    skill_pack:
+    - IP06_ip_deadline_reminder
+    - IP07_ip_ledger_update
+  ledger:
+    name: IP 台账
+    role: 台账管理员
+    description: 维护专利、商标、软著状态和风险标签。
+    workflow: workflows.md#七IP 台账
+    skill_pack:
+    - IP07_ip_ledger_update
+  archive:
+    name: 成果归档
+    role: 成果管理员
+    description: 将研发成果沉淀为可检索、可复用、可申报材料。
+    workflow: workflows.md#八成果归档
+    skill_pack:
+    - IP08_tech_result_archive
+    - IP01_innovation_mining
+common_skills:
+- C01_feishu_message_router
+- C02_feishu_file_receiver
+- C03_user_permission_check
+- C04_task_intent_classifier
+- C05_document_parser
+- C07_structured_extraction
+- C08_knowledge_retrieval
+- C09_rule_checker
+- C10_template_renderer
+- C11_table_exporter
+- C12_task_breakdown
+- C13_human_approval
+- C14_feishu_reminder
+- C15_audit_log
+- C16_result_archive
+- C17_sensitive_info_masking
+- C18_demo_mode
+domain_skills:
+- IP01_innovation_mining
+- IP02_patent_disclosure_generate
+- IP03_patent_search_summary
+- IP04_trademark_material_checklist
+- IP05_software_copyright_material
+- IP06_ip_deadline_reminder
+- IP07_ip_ledger_update
+- IP08_tech_result_archive
+skill_catalog: skills/ip_skills.yaml
+approval_policy:
+  requires_human_confirmation:
+  - 是否申请
+  - 专利权利要求
+  - 商标类别
+  - 最终提交
+  - 答复口径
+  - 费用缴纳
+  can_auto_generate:
+  - 创新点清单
+  - 交底书初稿
+  - 检索摘要
+  - 软著材料
+  - 商标材料清单
+  - 期限提醒
+  - IP台账
+  must_not_do:
+  - 自动提交知识产权申请
+  - 编造研发成果
+  - 泄露未公开技术
+  - 替代代理机构专业结论
+knowledge_sources:
+- knowledge/README.md
+- 技术方案库
+- 产品说明库
+- 专利交底模板
+- 软著材料模板
+- 商标类别表
+- IP台账
+- 研发成果库
+templates:
+  intake_card: templates/intake_card.md
+  analysis_report: templates/analysis_report.md
+  review_note: templates/review_note.md
+  archive_record: templates/archive_record.md
+demo:
+  script: demo/demo_script.md
+  test_cases: test_cases/p0_demo_cases.md

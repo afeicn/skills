@@ -1,0 +1,148 @@
+---
+id: project_application_assistant
+name: 项目申报数字员工
+version: 0.1.0
+owner: 项目申报负责人
+deployment:
+  workstation: 电脑7
+  folder: zmf/project-application-assistant
+  channel: 飞书
+  feishu_bot_name: 项目申报助手
+  hermes_agent_id: project_application_assistant
+mission: 通过飞书接收政策通知、申报指南、企业资料和项目材料，调用 Hermes Agent skills 完成政策机会、指南解析、匹配评估、材料清单、申报书框架、预算辅助、附件检查和答辩准备。
+users:
+- 申报负责人
+- 技术负责人
+- 财务人员
+- 项目负责人
+- 管理层
+scenarios:
+  policy_monitor:
+    name: 政策机会
+    role: 政策情报员
+    description: 抓取和整理项目申报通知，生成机会摘要和提醒。
+    workflow: workflows.md#一政策机会
+    skill_pack:
+    - A01_policy_opportunity_monitor
+    - A02_guideline_parse
+  guideline_parse:
+    name: 指南解析
+    role: 申报分析员
+    description: 提取申报方向、条件、时间、材料、评分点和限制条件。
+    workflow: workflows.md#二指南解析
+    skill_pack:
+    - A02_guideline_parse
+    - A04_material_checklist
+  match_evaluation:
+    name: 匹配评估
+    role: 申报顾问
+    description: 判断企业和项目是否符合申报条件并提示风险。
+    workflow: workflows.md#三匹配评估
+    skill_pack:
+    - A03_match_evaluation
+    - A02_guideline_parse
+  material_checklist:
+    name: 材料清单
+    role: 申报秘书
+    description: 生成附件清单、责任人、截止时间和补充材料提醒。
+    workflow: workflows.md#四材料清单
+    skill_pack:
+    - A04_material_checklist
+    - A08_attachment_review
+  application_writing:
+    name: 申报书撰写
+    role: 申报写作员
+    description: 生成申报书目录、章节框架、亮点和正文初稿。
+    workflow: workflows.md#五申报书撰写
+    skill_pack:
+    - A05_application_outline
+    - A06_application_draft
+  budget_draft:
+    name: 预算辅助
+    role: 预算助理
+    description: 生成预算科目、费用说明和合规提示。
+    workflow: workflows.md#六预算辅助
+    skill_pack:
+    - A07_budget_draft
+  attachment_review:
+    name: 附件检查
+    role: 材料质检员
+    description: 检查附件完整性、格式、盖章、时间和一致性。
+    workflow: workflows.md#七附件检查
+    skill_pack:
+    - A08_attachment_review
+    - A04_material_checklist
+  defense_prepare:
+    name: 答辩准备
+    role: 答辩教练
+    description: 预测评审问题并生成答辩口径和 PPT 大纲。
+    workflow: workflows.md#八答辩准备
+    skill_pack:
+    - A09_review_question_predict
+    - A06_application_draft
+common_skills:
+- C01_feishu_message_router
+- C02_feishu_file_receiver
+- C03_user_permission_check
+- C04_task_intent_classifier
+- C05_document_parser
+- C07_structured_extraction
+- C08_knowledge_retrieval
+- C09_rule_checker
+- C10_template_renderer
+- C11_table_exporter
+- C12_task_breakdown
+- C13_human_approval
+- C14_feishu_reminder
+- C15_audit_log
+- C16_result_archive
+- C17_sensitive_info_masking
+- C18_demo_mode
+domain_skills:
+- A01_policy_opportunity_monitor
+- A02_guideline_parse
+- A03_match_evaluation
+- A04_material_checklist
+- A05_application_outline
+- A06_application_draft
+- A07_budget_draft
+- A08_attachment_review
+- A09_review_question_predict
+skill_catalog: skills/project_application_skills.yaml
+approval_policy:
+  requires_human_confirmation:
+  - 是否申报
+  - 申报承诺
+  - 预算金额
+  - 财务数据
+  - 盖章材料
+  - 最终提交
+  can_auto_generate:
+  - 政策摘要
+  - 匹配度评估
+  - 材料清单
+  - 申报书框架
+  - 预算草案
+  - 答辩问题
+  must_not_do:
+  - 伪造证明材料
+  - 编造财务数据
+  - 自动提交申报
+  - 自动盖章承诺
+knowledge_sources:
+- knowledge/README.md
+- 政策通知库
+- 申报指南库
+- 企业资质库
+- 项目案例库
+- 财务数据口径
+- 知识产权材料库
+- 历史申报书
+templates:
+  intake_card: templates/intake_card.md
+  analysis_report: templates/analysis_report.md
+  review_note: templates/review_note.md
+  archive_record: templates/archive_record.md
+demo:
+  script: demo/demo_script.md
+  test_cases: test_cases/p0_demo_cases.md

@@ -1,0 +1,117 @@
+---
+skills:
+- id: A01_policy_opportunity_monitor
+  name: 政策机会监测
+  purpose: 整理政策通知、申报公告、截止时间和适配方向。
+  inputs:
+  - policy_sources
+  - keywords
+  - region
+  outputs:
+  - opportunity_list
+  - deadline_alert
+  - source_links
+  human_review: true
+  audit_log: true
+- id: A02_guideline_parse
+  name: 申报指南解析
+  purpose: 提取申报方向、条件、材料、流程、时间和评分关注点。
+  inputs:
+  - guideline_document
+  outputs:
+  - parsed_guideline
+  - requirements
+  - timeline
+  - scoring_focus
+  human_review: true
+  audit_log: true
+- id: A03_match_evaluation
+  name: 申报匹配度评估
+  purpose: 判断企业、项目、团队、财务和知识产权是否满足条件。
+  inputs:
+  - parsed_guideline
+  - company_profile
+  - project_profile
+  outputs:
+  - match_score
+  - matched_items
+  - gaps
+  - risk_items
+  human_review: true
+  audit_log: true
+- id: A04_material_checklist
+  name: 材料清单生成
+  purpose: 生成附件、证明、责任人、截止时间和补充材料清单。
+  inputs:
+  - parsed_guideline
+  - match_evaluation
+  outputs:
+  - material_checklist
+  - owner_table
+  - missing_items
+  human_review: true
+  audit_log: true
+- id: A05_application_outline
+  name: 申报书框架生成
+  purpose: 根据指南生成申报书目录、章节重点和写作素材需求。
+  inputs:
+  - parsed_guideline
+  - project_profile
+  - template_library
+  outputs:
+  - application_outline
+  - section_requirements
+  - material_needs
+  human_review: true
+  audit_log: true
+- id: A06_application_draft
+  name: 申报书初稿生成
+  purpose: 生成项目背景、技术路线、创新点、应用价值和实施计划初稿。
+  inputs:
+  - application_outline
+  - project_materials
+  - case_library
+  outputs:
+  - draft_sections
+  - highlights
+  - need_human_input
+  human_review: true
+  audit_log: true
+- id: A07_budget_draft
+  name: 预算测算辅助
+  purpose: 生成预算科目、费用说明、测算依据和合规风险提示。
+  inputs:
+  - guideline_budget_rules
+  - project_plan
+  - finance_inputs
+  outputs:
+  - budget_table
+  - budget_notes
+  - risk_notes
+  human_review: true
+  audit_log: true
+- id: A08_attachment_review
+  name: 附件完整性检查
+  purpose: 检查附件、格式、盖章、日期、主体一致性和缺项。
+  inputs:
+  - material_checklist
+  - attachments
+  outputs:
+  - review_result
+  - missing_items
+  - correction_notice
+  human_review: true
+  audit_log: true
+- id: A09_review_question_predict
+  name: 评审问题预判
+  purpose: 预测评审关注问题、答辩口径和 PPT 大纲。
+  inputs:
+  - application_draft
+  - parsed_guideline
+  - risk_items
+  outputs:
+  - question_list
+  - answer_points
+  - ppt_outline
+  human_review: true
+  audit_log: true

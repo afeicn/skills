@@ -1,0 +1,105 @@
+---
+skills:
+- id: IP01_innovation_mining
+  name: 创新点挖掘
+  purpose: 从技术方案、项目材料和产品说明中提炼创新点、差异点和技术效果。
+  inputs:
+  - technical_solution
+  - project_records
+  - product_description
+  outputs:
+  - innovation_points
+  - technical_effects
+  - disclosure_questions
+  human_review: true
+  audit_log: true
+- id: IP02_patent_disclosure_generate
+  name: 专利交底书生成
+  purpose: 生成技术领域、背景问题、方案、效果、附图说明和实施例初稿。
+  inputs:
+  - innovation_points
+  - technical_materials
+  - template
+  outputs:
+  - disclosure_draft
+  - missing_details
+  - inventor_questions
+  human_review: true
+  audit_log: true
+- id: IP03_patent_search_summary
+  name: 专利检索摘要
+  purpose: 基于关键词和检索结果生成相似技术、差异方向和风险提示。
+  inputs:
+  - keywords
+  - search_results
+  - technical_solution
+  outputs:
+  - search_summary
+  - similar_tech
+  - differentiation_notes
+  human_review: true
+  audit_log: true
+- id: IP04_trademark_material_checklist
+  name: 商标材料清单
+  purpose: 生成商标名称、类别、申请主体、使用证据和材料清单。
+  inputs:
+  - trademark_name
+  - business_scope
+  - usage_materials
+  outputs:
+  - trademark_checklist
+  - class_suggestion
+  - risk_notes
+  human_review: true
+  audit_log: true
+- id: IP05_software_copyright_material
+  name: 软著材料生成
+  purpose: 生成软件说明书、功能模块、运行环境、材料清单和代码说明。
+  inputs:
+  - software_description
+  - screenshots
+  - source_summary
+  outputs:
+  - copyright_materials
+  - manual_outline
+  - missing_items
+  human_review: true
+  audit_log: true
+- id: IP06_ip_deadline_reminder
+  name: IP 期限提醒
+  purpose: 管理答复、缴费、补正、续展和年费等期限提醒。
+  inputs:
+  - ip_ledger
+  - deadline_rules
+  outputs:
+  - deadline_list
+  - reminder_payload
+  - overdue_alerts
+  human_review: true
+  audit_log: true
+- id: IP07_ip_ledger_update
+  name: IP 台账更新
+  purpose: 生成专利、商标、软著状态、费用、负责人和风险标签。
+  inputs:
+  - ip_record
+  - status_update
+  - attachments
+  outputs:
+  - ledger_row
+  - status_summary
+  - risk_tags
+  human_review: true
+  audit_log: true
+- id: IP08_tech_result_archive
+  name: 研发成果归档
+  purpose: 将项目成果、技术点、材料和后续申请建议归档。
+  inputs:
+  - project_records
+  - innovation_points
+  - attachments
+  outputs:
+  - archive_record
+  - knowledge_tags
+  - reuse_suggestions
+  human_review: true
+  audit_log: true

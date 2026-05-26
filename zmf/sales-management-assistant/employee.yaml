@@ -1,0 +1,136 @@
+---
+id: sales_management_assistant
+name: 销售管理助手
+version: 0.1.0
+owner: 销售总监
+deployment:
+  workstation: 电脑5
+  folder: zmf/sales-management-assistant
+  channel: 飞书
+  feishu_bot_name: 销售管理助手
+  hermes_agent_id: sales_management_assistant
+mission: 通过飞书接收团队周报、商机台账和销售过程数据，调用 Hermes Agent skills 完成销售周报、漏斗分析、重点商机预警、动作督办、销售预测、例会材料和赢单丢单复盘。
+users:
+- 销售总监
+- 销售经理
+- 销售运营
+- 管理层
+scenarios:
+  weekly_summary:
+    name: 销售周报汇总
+    role: 经营汇报员
+    description: 汇总销售个人周报、客户进展、风险和下周计划。
+    workflow: workflows.md#一销售周报汇总
+    skill_pack:
+    - SM01_weekly_report_summary
+    - SM08_team_performance_hint
+  pipeline_analysis:
+    name: 销售漏斗分析
+    role: 漏斗分析员
+    description: 分析线索、商机、报价、合同和回款阶段的转化情况。
+    workflow: workflows.md#二销售漏斗分析
+    skill_pack:
+    - SM02_pipeline_analysis
+    - SM05_sales_forecast
+  key_deal_warning:
+    name: 重点商机预警
+    role: 商机督办员
+    description: 标记大金额、久未推进、高风险和战略客户商机。
+    workflow: workflows.md#三重点商机预警
+    skill_pack:
+    - SM03_key_deal_warning
+    - SM04_sales_action_followup
+  action_followup:
+    name: 销售动作督办
+    role: 督办员
+    description: 催办拜访、方案、报价、合同、回款和客户确认事项。
+    workflow: workflows.md#四销售动作督办
+    skill_pack:
+    - SM04_sales_action_followup
+    - SM03_key_deal_warning
+  sales_forecast:
+    name: 销售预测
+    role: 预测分析员
+    description: 基于阶段、概率和历史转化率预测合同、收入和回款。
+    workflow: workflows.md#五销售预测
+    skill_pack:
+    - SM05_sales_forecast
+    - SM02_pipeline_analysis
+  meeting_pack:
+    name: 销售例会
+    role: 会议材料员
+    description: 生成销售周会/月会材料、讨论问题和决策事项。
+    workflow: workflows.md#六销售例会
+    skill_pack:
+    - SM06_sales_meeting_pack
+    - SM01_weekly_report_summary
+  win_loss_review:
+    name: 赢单丢单复盘
+    role: 复盘员
+    description: 复盘竞品、报价、方案、关系和过程动作。
+    workflow: workflows.md#七赢单丢单复盘
+    skill_pack:
+    - SM07_win_loss_review
+    - SM08_team_performance_hint
+common_skills:
+- C01_feishu_message_router
+- C02_feishu_file_receiver
+- C03_user_permission_check
+- C04_task_intent_classifier
+- C05_document_parser
+- C07_structured_extraction
+- C08_knowledge_retrieval
+- C09_rule_checker
+- C10_template_renderer
+- C11_table_exporter
+- C12_task_breakdown
+- C13_human_approval
+- C14_feishu_reminder
+- C15_audit_log
+- C16_result_archive
+- C17_sensitive_info_masking
+- C18_demo_mode
+domain_skills:
+- SM01_weekly_report_summary
+- SM02_pipeline_analysis
+- SM03_key_deal_warning
+- SM04_sales_action_followup
+- SM05_sales_forecast
+- SM06_sales_meeting_pack
+- SM07_win_loss_review
+- SM08_team_performance_hint
+skill_catalog: skills/sales_management_skills.yaml
+approval_policy:
+  requires_human_confirmation:
+  - 业绩预测
+  - 对外汇报
+  - 销售目标调整
+  - 重大商机处置
+  - 团队评价
+  can_auto_generate:
+  - 周报汇总
+  - 漏斗分析
+  - 预警清单
+  - 督办列表
+  - 例会材料
+  - 复盘草稿
+  must_not_do:
+  - 擅自修改销售目标
+  - 自动评价员工绩效
+  - 泄露客户和业绩敏感数据
+knowledge_sources:
+- knowledge/README.md
+- 销售周报库
+- CRM导出表
+- 合同回款台账
+- 销售管理制度
+- 目标预算表
+- 历史复盘库
+templates:
+  intake_card: templates/intake_card.md
+  analysis_report: templates/analysis_report.md
+  review_note: templates/review_note.md
+  archive_record: templates/archive_record.md
+demo:
+  script: demo/demo_script.md
+  test_cases: test_cases/p0_demo_cases.md

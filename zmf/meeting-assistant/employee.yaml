@@ -1,0 +1,136 @@
+---
+id: meeting_assistant
+name: 会议助手
+version: 0.1.0
+owner: 总经办/PMO
+deployment:
+  workstation: 电脑9
+  folder: zmf/meeting-assistant
+  channel: 飞书
+  feishu_bot_name: 会议助手
+  hermes_agent_id: meeting_assistant
+mission: 通过飞书接收会议主题、背景材料、录音转写和聊天记录，调用 Hermes Agent skills 完成会前准备、会中记录、会议纪要、行动项、会后督办、会议复盘和知识归档。
+users:
+- 总经办
+- PMO
+- 项目经理
+- 会议主持人
+- 管理层
+scenarios:
+  preparation:
+    name: 会前准备
+    role: 会议秘书
+    description: 生成议程、参会人、资料包、通知和讨论问题。
+    workflow: workflows.md#一会前准备
+    skill_pack:
+    - MT01_agenda_generate
+    - MT02_material_pack
+    - MT03_meeting_notice
+  recording:
+    name: 会中记录
+    role: 记录员
+    description: 接收录音或转写，整理关键讨论、分歧和待确认问题。
+    workflow: workflows.md#二会中记录
+    skill_pack:
+    - MT04_transcript_clean
+    - MT05_minutes_generate
+  minutes:
+    name: 会议纪要
+    role: 纪要员
+    description: 生成结构化纪要、决议、问题清单和附件索引。
+    workflow: workflows.md#三会议纪要
+    skill_pack:
+    - MT05_minutes_generate
+    - MT06_action_item_extract
+  action_items:
+    name: 行动项提取
+    role: 督办员
+    description: 提取责任人、事项、截止时间、依赖和完成标准。
+    workflow: workflows.md#四行动项提取
+    skill_pack:
+    - MT06_action_item_extract
+    - MT07_action_followup
+  followup:
+    name: 会后督办
+    role: 执行跟踪员
+    description: 发送飞书提醒、收集进展、更新状态和提示延期。
+    workflow: workflows.md#五会后督办
+    skill_pack:
+    - MT07_action_followup
+  retro:
+    name: 会议复盘
+    role: 复盘员
+    description: 复盘会议质量、未闭环事项和改进建议。
+    workflow: workflows.md#六会议复盘
+    skill_pack:
+    - MT08_meeting_retro_archive
+  archive:
+    name: 知识归档
+    role: 档案员
+    description: 将纪要、决议、行动项和资料归档到项目或客户库。
+    workflow: workflows.md#七知识归档
+    skill_pack:
+    - MT08_meeting_retro_archive
+    - MT05_minutes_generate
+common_skills:
+- C01_feishu_message_router
+- C02_feishu_file_receiver
+- C03_user_permission_check
+- C04_task_intent_classifier
+- C05_document_parser
+- C07_structured_extraction
+- C08_knowledge_retrieval
+- C09_rule_checker
+- C10_template_renderer
+- C11_table_exporter
+- C12_task_breakdown
+- C13_human_approval
+- C14_feishu_reminder
+- C15_audit_log
+- C16_result_archive
+- C17_sensitive_info_masking
+- C18_demo_mode
+domain_skills:
+- MT01_agenda_generate
+- MT02_material_pack
+- MT03_meeting_notice
+- MT04_transcript_clean
+- MT05_minutes_generate
+- MT06_action_item_extract
+- MT07_action_followup
+- MT08_meeting_retro_archive
+skill_catalog: skills/meeting_skills.yaml
+approval_policy:
+  requires_human_confirmation:
+  - 正式会议纪要
+  - 决议发布
+  - 对外发送纪要
+  - 责任人和截止时间调整
+  can_auto_generate:
+  - 会议议程
+  - 资料包
+  - 纪要草稿
+  - 行动项
+  - 督办提醒
+  - 复盘摘要
+  must_not_do:
+  - 伪造发言
+  - 自动发布正式决议
+  - 泄露会议敏感信息
+  - 替代主持人确认结论
+knowledge_sources:
+- knowledge/README.md
+- 会议纪要模板
+- 项目资料库
+- 客户资料库
+- 行动项台账
+- 决议库
+- 会议SOP
+templates:
+  intake_card: templates/intake_card.md
+  analysis_report: templates/analysis_report.md
+  review_note: templates/review_note.md
+  archive_record: templates/archive_record.md
+demo:
+  script: demo/demo_script.md
+  test_cases: test_cases/p0_demo_cases.md

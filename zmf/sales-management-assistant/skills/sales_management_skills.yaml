@@ -1,0 +1,99 @@
+---
+skills:
+- id: SM01_weekly_report_summary
+  name: 销售周报汇总
+  purpose: 汇总团队周报、客户进展、风险问题和下周计划。
+  inputs:
+  - weekly_reports
+  - crm_export
+  outputs:
+  - management_summary
+  - progress_table
+  - risk_items
+  human_review: true
+  audit_log: true
+- id: SM02_pipeline_analysis
+  name: 销售漏斗分析
+  purpose: 分析各销售阶段数量、金额、转化率和卡点。
+  inputs:
+  - crm_pipeline
+  - target_plan
+  outputs:
+  - pipeline_report
+  - conversion_metrics
+  - bottlenecks
+  human_review: true
+  audit_log: true
+- id: SM03_key_deal_warning
+  name: 重点商机预警
+  purpose: 识别停滞、高金额、高风险、战略客户和临近节点商机。
+  inputs:
+  - opportunity_table
+  - activity_logs
+  outputs:
+  - warning_list
+  - risk_tags
+  - priority_actions
+  human_review: true
+  audit_log: true
+- id: SM04_sales_action_followup
+  name: 销售动作督办
+  purpose: 生成拜访、方案、报价、合同和回款节点督办清单。
+  inputs:
+  - opportunity_table
+  - warning_list
+  outputs:
+  - followup_tasks
+  - reminder_payload
+  human_review: true
+  audit_log: true
+- id: SM05_sales_forecast
+  name: 销售预测
+  purpose: 基于阶段概率、历史转化和人工修正生成预测。
+  inputs:
+  - pipeline_report
+  - historical_conversion
+  - target_plan
+  outputs:
+  - forecast_table
+  - confidence_range
+  - assumptions
+  human_review: true
+  audit_log: true
+- id: SM06_sales_meeting_pack
+  name: 销售例会材料生成
+  purpose: 生成例会议程、经营摘要、问题清单和决策事项。
+  inputs:
+  - management_summary
+  - pipeline_report
+  - warning_list
+  outputs:
+  - meeting_agenda
+  - slide_outline
+  - discussion_questions
+  human_review: true
+  audit_log: true
+- id: SM07_win_loss_review
+  name: 赢单丢单复盘
+  purpose: 复盘赢单或丢单原因并沉淀可复用打法。
+  inputs:
+  - deal_record
+  - customer_feedback
+  - competitor_info
+  outputs:
+  - review_report
+  - root_causes
+  - playbook_updates
+  human_review: true
+  audit_log: true
+- id: SM08_team_performance_hint
+  name: 团队经营提示
+  purpose: 从过程数据中识别团队共性问题、能力短板和辅导建议。
+  inputs:
+  - weekly_reports
+  - activity_metrics
+  outputs:
+  - team_insights
+  - coaching_suggestions
+  human_review: true
+  audit_log: true

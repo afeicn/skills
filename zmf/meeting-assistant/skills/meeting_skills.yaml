@@ -1,0 +1,105 @@
+---
+skills:
+- id: MT01_agenda_generate
+  name: 会前议程生成
+  purpose: 根据会议主题、目标、背景和参会人生成议程和讨论问题。
+  inputs:
+  - meeting_topic
+  - goals
+  - participants
+  - background_materials
+  outputs:
+  - agenda
+  - discussion_questions
+  - time_plan
+  human_review: true
+  audit_log: true
+- id: MT02_material_pack
+  name: 会议资料包生成
+  purpose: 汇总背景资料、项目状态、客户信息和需要预读的材料。
+  inputs:
+  - agenda
+  - related_documents
+  - project_records
+  outputs:
+  - material_pack
+  - reading_list
+  - missing_materials
+  human_review: true
+  audit_log: true
+- id: MT03_meeting_notice
+  name: 参会通知生成
+  purpose: 生成会议通知、参会人提醒、资料链接和会前准备要求。
+  inputs:
+  - agenda
+  - participants
+  - material_pack
+  outputs:
+  - notice_text
+  - feishu_reminder_payload
+  human_review: true
+  audit_log: true
+- id: MT04_transcript_clean
+  name: 录音转写整理
+  purpose: 整理录音转写、去噪、分段并识别发言人和议题。
+  inputs:
+  - transcript
+  - audio_text
+  - speaker_map
+  outputs:
+  - clean_transcript
+  - topic_segments
+  - speaker_notes
+  human_review: true
+  audit_log: true
+- id: MT05_minutes_generate
+  name: 会议纪要生成
+  purpose: 生成背景、议题、讨论过程、决议、问题和附件索引。
+  inputs:
+  - clean_transcript
+  - agenda
+  - attachments
+  outputs:
+  - minutes_draft
+  - decisions
+  - issue_list
+  - attachment_index
+  human_review: true
+  audit_log: true
+- id: MT06_action_item_extract
+  name: 行动项提取
+  purpose: 提取责任人、任务、截止时间、依赖关系和验收标准。
+  inputs:
+  - minutes_draft
+  - clean_transcript
+  outputs:
+  - action_items
+  - owner_table
+  - due_dates
+  human_review: true
+  audit_log: true
+- id: MT07_action_followup
+  name: 行动项督办
+  purpose: 生成飞书待办、提醒节奏、延期提示和状态汇总。
+  inputs:
+  - action_items
+  - progress_updates
+  outputs:
+  - reminder_payload
+  - status_summary
+  - overdue_list
+  human_review: true
+  audit_log: true
+- id: MT08_meeting_retro_archive
+  name: 会议复盘与归档
+  purpose: 生成会议复盘、未闭环事项、知识标签和归档记录。
+  inputs:
+  - minutes_final
+  - action_status
+  - materials
+  outputs:
+  - retro_summary
+  - archive_record
+  - knowledge_tags
+  human_review: true
+  audit_log: true
