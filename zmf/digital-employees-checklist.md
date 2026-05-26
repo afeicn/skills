@@ -6,7 +6,7 @@
 | 2 | `bid-assistant/` | 电脑2 | 标书助手 | 小招 | 7 | 16 | 已完成 | 手工细化版 |
 | 3 | `marketing-assistant/` | 电脑3 | 营销助手 | 小宣 | 7 | 8 | 已完成 | 统一结构化版 |
 | 4 | `sales-assistant/` | 电脑4 | 销售助手 | 小销 | 7 | 8 | 已完成 | 统一结构化版 |
-| 5 | `sales-management-assistant/` | 电脑5 | 销售运营助手 | 小运 | 7 | 8 | 已完成 | 统一结构化版 |
+| 5 | `sales-management-assistant/` | 电脑5 | 运营管理助手 | 小运 | 7 | 8 | 已完成 | 统一结构化版 |
 | 6 | `hr-assistant/` | 电脑6 | 人力助手 | 小才 | 8 | 9 | 已完成 | 统一结构化版 |
 | 7 | `project-application-assistant/` | 电脑7 | 项目申报数字员工 | 小申 | 8 | 9 | 已完成 | 统一结构化版 |
 | 8 | `project-management-assistant/` | 电脑8 | 项目管理助手 | 小项 | 8 | 9 | 已完成 | 统一结构化版 |

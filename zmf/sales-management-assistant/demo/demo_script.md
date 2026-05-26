@@ -1,4 +1,4 @@
-# 销售运营助手 Demo Script
+# 运营管理助手 Demo Script
 
 ## 演示目标
 

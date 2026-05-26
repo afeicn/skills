@@ -1,4 +1,4 @@
-# 销售运营助手数字员工
+# 运营管理助手数字员工
 
 > 版本：2026-05-26  
 > 部署建议：电脑5，飞书入口“小运”，Hermes Agent 员工 ID：`sales_management_assistant`
