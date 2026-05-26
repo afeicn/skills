@@ -1,12 +1,13 @@
 id: bid_assistant
 name: 标书助手
+nickname: 小招
 version: "0.1.0"
 owner: 标书/商务负责人
 deployment:
   workstation: "电脑2"
   folder: "zmf/bid-assistant"
   channel: 飞书
-  feishu_bot_name: 标书助手
+  feishu_bot_name: 小招
   hermes_agent_id: bid_assistant
 
 mission: >

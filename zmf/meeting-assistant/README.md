@@ -1,7 +1,7 @@
 # 会议助手数字员工
 
 > 版本：2026-05-26  
-> 部署建议：电脑9，飞书入口“会议助手”，Hermes Agent 员工 ID：`meeting_assistant`
+> 部署建议：电脑9，飞书入口“小会”，Hermes Agent 员工 ID：`meeting_assistant`
 
 ## 1. 员工定位
 

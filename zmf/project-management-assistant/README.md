@@ -1,7 +1,7 @@
 # 项目管理助手数字员工
 
 > 版本：2026-05-26  
-> 部署建议：电脑8，飞书入口“项目管理助手”，Hermes Agent 员工 ID：`project_management_assistant`
+> 部署建议：电脑8，飞书入口“小项”，Hermes Agent 员工 ID：`project_management_assistant`
 
 ## 1. 员工定位
 

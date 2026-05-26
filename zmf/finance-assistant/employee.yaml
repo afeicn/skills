@@ -1,12 +1,13 @@
 id: finance_assistant
 name: 财务助手
+nickname: 小财
 version: "0.1.0"
 owner: 财务负责人
 deployment:
   workstation: "电脑1"
   folder: "啄木蜂/数字员工/财务助手"
   channel: 飞书
-  feishu_bot_name: 财务助手
+  feishu_bot_name: 小财
   hermes_agent_id: finance_assistant
 
 mission: >

@@ -1,7 +1,7 @@
 # 法务助手数字员工
 
 > 版本：2026-05-26  
-> 部署建议：电脑10，飞书入口“法务助手”，Hermes Agent 员工 ID：`legal_assistant`
+> 部署建议：电脑10，飞书入口“小法”，Hermes Agent 员工 ID：`legal_assistant`
 
 ## 1. 员工定位
 

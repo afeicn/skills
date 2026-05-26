@@ -1,13 +1,14 @@
 ---
 id: meeting_assistant
 name: 会议助手
+nickname: 小会
 version: 0.1.0
 owner: 总经办/PMO
 deployment:
   workstation: 电脑9
   folder: zmf/meeting-assistant
   channel: 飞书
-  feishu_bot_name: 会议助手
+  feishu_bot_name: 小会
   hermes_agent_id: meeting_assistant
 mission: 通过飞书接收会议主题、背景材料、录音转写和聊天记录，调用 Hermes Agent skills 完成会前准备、会中记录、会议纪要、行动项、会后督办、会议复盘和知识归档。
 users:

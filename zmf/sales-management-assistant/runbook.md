@@ -1,9 +1,9 @@
-# 销售管理助手 Runbook
+# 销售运营助手 Runbook
 
 ## 部署前检查
 
 1. 确认 电脑5 可运行 Hermes Agent。
-2. 确认飞书机器人“销售管理助手”可用。
+2. 确认飞书机器人“小运”可用。
 3. 确认 `employee.yaml` 中的 `hermes_agent_id` 为 `sales_management_assistant`。
 4. 将知识库、模板、演示样例放入对应目录。
 5. 配置权限、审计日志、归档目录和人工确认人。
