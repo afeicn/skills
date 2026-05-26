@@ -1,0 +1,110 @@
+skills:
+  - id: F01_invoice_receive_and_classify
+    name: 发票接收与票据分类
+    purpose: 接收飞书附件，判断发票类型、文件类型和是否需要补充附件。
+    inputs: [feishu_message, attachments, user_profile]
+    outputs: [invoice_files, file_type, invoice_type, missing_basic_info]
+
+  - id: F02_invoice_ocr_extract
+    name: 发票 OCR 识别
+    purpose: 提取发票代码、号码、金额、税额、销售方、购买方、日期等字段。
+    inputs: [invoice_file]
+    outputs: [invoice_fields, ocr_confidence, fields_need_review]
+
+  - id: F03_invoice_verify
+    name: 发票验真
+    purpose: 对接验真接口或演示模式，返回发票真伪、验真状态和异常信息。
+    inputs: [invoice_fields]
+    outputs: [verify_status, verify_source, verify_message]
+    note: "6 月 8 日演示可使用 demo_mode，不得表述为真实税务验真。"
+
+  - id: F04_duplicate_reimbursement_check
+    name: 重复报销检查
+    purpose: 根据发票号码、金额、开票日期、报销人和历史台账检查疑似重复。
+    inputs: [invoice_fields, reimbursement_ledger]
+    outputs: [duplicate_status, duplicate_candidates]
+
+  - id: F05_expense_type_classify
+    name: 费用类型识别
+    purpose: 判断费用属于差旅、交通、办公、招待、会议、采购或其他类型。
+    inputs: [invoice_fields, reimbursement_description]
+    outputs: [expense_type, confidence, questions]
+
+  - id: F06_attachment_completeness_check
+    name: 附件完整性检查
+    purpose: 根据费用类型检查所需附件是否完整。
+    inputs: [expense_type, attachments, policy_rules]
+    outputs: [is_complete, missing_attachments, supplement_notice]
+
+  - id: F07_expense_policy_check
+    name: 费用标准校验
+    purpose: 按财务制度检查金额、标准、审批前置条件和报销范围。
+    inputs: [expense_type, amount, policy_rules, user_profile]
+    outputs: [policy_check_status, risk_items, policy_basis]
+
+  - id: F08_project_department_cost_center_match
+    name: 项目/部门/成本中心归属
+    purpose: 判断费用应归属哪个项目、部门或成本中心。
+    inputs: [user_profile, reimbursement_description, project_list]
+    outputs: [department, project, cost_center, need_user_confirm]
+
+  - id: F09_budget_and_account_subject_check
+    name: 预算余额与费用科目校验
+    purpose: 在预算数据可用时检查预算余额、费用科目和项目匹配。
+    inputs: [project, cost_center, amount, budget_table]
+    outputs: [budget_status, account_subject, warning]
+
+  - id: F10_approval_route_match
+    name: 审批权限与流程匹配
+    purpose: 根据金额、费用类型、部门和制度判断审批路径。
+    inputs: [amount, expense_type, department, policy_rules]
+    outputs: [approval_route, approvers, approval_reason]
+
+  - id: F11_reimbursement_form_generate
+    name: 报销单生成
+    purpose: 生成标准报销单草稿和附件清单。
+    inputs: [invoice_fields, expense_type, department, project, attachments]
+    outputs: [reimbursement_form_markdown, reimbursement_form_fields]
+
+  - id: F12_audit_opinion_generate
+    name: 报销审核意见生成
+    purpose: 汇总验真、重复检查、制度校验、附件检查结果，生成审核意见。
+    inputs: [verify_status, duplicate_status, policy_check_status, attachment_check_status]
+    outputs: [audit_result, audit_opinion, next_action]
+
+  - id: F13_missing_material_notice
+    name: 退回补充材料通知
+    purpose: 生成补充材料通知并通过飞书发给员工。
+    inputs: [missing_attachments, user_profile, reimbursement_id]
+    outputs: [notice_text, feishu_message_payload]
+
+  - id: F14_supervisor_approval_submit
+    name: 主管审批提交
+    purpose: 生成飞书审批卡片并提交主管或财务复核。
+    inputs: [reimbursement_form_fields, audit_opinion, approval_route]
+    outputs: [approval_card, submit_status]
+
+  - id: F15_finance_review_archive
+    name: 财务复核归档
+    purpose: 财务复核后归档凭证、审核意见、审批记录和附件。
+    inputs: [reimbursement_id, approval_status, attachments, audit_log]
+    outputs: [archive_path, archive_status]
+
+  - id: F16_finance_policy_qa
+    name: 财务制度问答
+    purpose: 基于财务制度知识库回答报销流程、差旅标准和附件要求。
+    inputs: [question, user_profile, policy_knowledge_base]
+    outputs: [answer, cited_policy, need_human_confirm]
+
+  - id: F17_reimbursement_ledger_update
+    name: 报销台账更新
+    purpose: 生成或更新报销台账记录。
+    inputs: [reimbursement_form_fields, audit_result, approval_status]
+    outputs: [ledger_row, update_status]
+
+  - id: F18_monthly_expense_analysis
+    name: 月度费用分析
+    purpose: 按部门、项目、费用类型统计费用并提示异常。
+    inputs: [ledger_table, month]
+    outputs: [expense_summary, anomaly_items, suggestions]
+
