@@ -16,7 +16,7 @@ skills:
     purpose: 对接验真接口或演示模式，返回发票真伪、验真状态和异常信息。
     inputs: [invoice_fields]
     outputs: [verify_status, verify_source, verify_message]
-    note: "6 月 8 日演示可使用 demo_mode，不得表述为真实税务验真。"
+    note: "演示版可使用 demo_mode，不得表述为真实税务验真。"
 
   - id: F04_duplicate_reimbursement_check
     name: 重复报销检查
@@ -107,4 +107,3 @@ skills:
     purpose: 按部门、项目、费用类型统计费用并提示异常。
     inputs: [ledger_table, month]
     outputs: [expense_summary, anomaly_items, suggestions]
-

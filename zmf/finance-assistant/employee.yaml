@@ -114,6 +114,5 @@ templates:
   feishu_approval_card: templates/feishu_approval_card.md
 
 demo:
-  script: demo/608_demo_script.md
+  script: demo/demo_script.md
   test_cases: test_cases/p0_demo_cases.md
-
