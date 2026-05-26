@@ -16,11 +16,26 @@
 
 {{ deviation_risks }}
 
+## 关键数字一致性
+
+{{ key_number_consistency }}
+
+## 样例残留检查
+
+{{ sample_residue_check }}
+
+## AI 腔和内部策略词检查
+
+{{ ai_tone_check }}
+
 ## 前后不一致
 
 {{ inconsistency_items }}
 
+## 废标风险
+
+{{ rejection_risk_items }}
+
 ## 提交前待确认
 
 {{ final_confirmation_items }}
-

@@ -12,6 +12,14 @@
 
 {{ scoring_criteria }}
 
+## 实质性要求
+
+{{ substantive_requirements }}
+
+## 客观分材料
+
+{{ objective_materials }}
+
 ## 提交要求
 
 {{ submission_requirements }}
@@ -24,7 +32,10 @@
 
 {{ bid_recommendation }}
 
+## 评分模型入口
+
+{{ score_model_summary }}
+
 ## 需人工确认事项
 
 {{ human_confirmation_items }}
-
