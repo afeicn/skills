@@ -1,5 +1,5 @@
 ---
-name: finance-tracker
+name: finance-assistant
 description: "智能财务事项与报销跟踪系统。它能够对多公司、多发票抬头进行智能化管理，从发票文件的接收、解析、分类存储到最终报销，提供一站式全生命周期的跟踪与提醒服务。支持PyMuPDF智能发票解析归档、发票缺漏智能补录及重要财务日程提醒。"
 ---
 
@@ -198,19 +198,19 @@ print(text)
 # 每周一 10:00 发票报销提醒（按抬头分组）
 schedule: "0 10 * * 1"
 prompt: "执行财务跟踪周报：读取 ~/finance/invoices.md 中所有 ⏳待报销 的发票，按抬头分组汇总（同抬头可集中报销）；读取 ~/finance/no_invoice.md 中未开发票的费用；读取 ~/finance/important.md 中未完成事项。生成周报发给[老板]。"
-skills: ["finance-tracker"]
+skills: ["finance-assistant"]
 deliver: "origin"
 
 # 每周一 10:05 无发票提醒
 schedule: "0 10 * * 1"
 prompt: "读取 ~/finance/no_invoice.md，列出所有还未开发票的费用记录（含抬头），提醒[老板]联系开票。每项费用的提醒次数+1。"
-skills: ["finance-tracker"]
+skills: ["finance-assistant"]
 deliver: "origin"
 
 # 每周一 10:10 重要事项
 schedule: "0 10 * * 1"
 prompt: "读取 ~/finance/important.md，列出所有状态为 🔴待处理 的重要财务事项，提醒[老板]注意截止日期。"
-skills: ["finance-tracker"]
+skills: ["finance-assistant"]
 deliver: "origin"
 ```
 
