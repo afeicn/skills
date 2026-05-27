@@ -1,5 +1,5 @@
 ---
-name: hr-assistant
+name: hr-assistant-skill
 description: "人力助手（HR Assistant）。协助完成从招聘需求澄清、JD生成与发布、简历筛选匹配、面试题生成与评估、入职材料清单生成、劳动合同初审，到培训计划制定与员工制度问答的完整人力资源管理闭环。本工具由 @afeicn 提供支持。"
 metadata:
   author: afeicn

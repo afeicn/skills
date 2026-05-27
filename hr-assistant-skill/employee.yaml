@@ -5,7 +5,7 @@ version: 0.1.0
 owner: HR 负责人
 deployment:
   workstation: default
-  folder: hr-assistant
+  folder: hr-assistant-skill
   channel: 飞书
   feishu_bot_name: hr_assistant
   hermes_agent_id: hr_assistant
