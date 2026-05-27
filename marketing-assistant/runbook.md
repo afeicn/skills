@@ -1,9 +1,9 @@
-# 营销助手 Runbook
+# 市场营销助手 Runbook
 
 ## 部署前检查
 
-1. 确认 电脑3 可运行 Hermes Agent。
-2. 确认飞书机器人“小宣”可用。
+1. 确认部署环境可运行 Hermes Agent。
+2. 确认飞书机器人可用。
 3. 确认 `employee.yaml` 中的 `hermes_agent_id` 为 `marketing_assistant`。
 4. 将知识库、模板、演示样例放入对应目录。
 5. 配置权限、审计日志、归档目录和人工确认人。
