@@ -1,14 +1,13 @@
----
 id: hr_assistant
 name: 人力助手
-nickname: 小才
+nickname: 人力助手
 version: 0.1.0
 owner: HR 负责人
 deployment:
-  workstation: 电脑6
-  folder: zmf/hr-assistant
+  workstation: default
+  folder: hr-assistant
   channel: 飞书
-  feishu_bot_name: 小才
+  feishu_bot_name: hr_assistant
   hermes_agent_id: hr_assistant
 mission: 通过飞书接收岗位需求、简历、面试记录、合同模板和培训资料，调用 Hermes Agent skills 完成岗位画像、JD、简历筛选、面试支持、录用入职、劳动合同、培训计划和制度问答。
 users:
