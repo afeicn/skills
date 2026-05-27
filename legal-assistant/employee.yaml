@@ -1,14 +1,13 @@
----
 id: legal_assistant
 name: 法务助手
-nickname: 小法
+nickname: 法务助手
 version: 0.1.0
 owner: 法务负责人
 deployment:
-  workstation: 电脑10
-  folder: zmf/legal-assistant
+  workstation: default
+  folder: legal-assistant
   channel: 飞书
-  feishu_bot_name: 小法
+  feishu_bot_name: legal_assistant
   hermes_agent_id: legal_assistant
 mission: 通过飞书接收合同、补充协议、合作方案和法律咨询问题，调用 Hermes Agent skills 完成合同接收、要素抽取、条款风险审查、模板对比、修改建议、法律问答、审批意见和合同台账。
 users:
