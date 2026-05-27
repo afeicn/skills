@@ -5,8 +5,8 @@ nickname: 小销
 version: 0.1.0
 owner: 销售负责人
 deployment:
-  workstation: 电脑4
-  folder: zmf/sales-assistant
+  workstation: default
+  folder: sales-assistant
   channel: 飞书
   feishu_bot_name: 小销
   hermes_agent_id: sales_assistant
